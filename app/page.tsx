@@ -1,101 +1,136 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CheckCircle, Lock, Users, Vote } from "lucide-react"
+
+export default function LandingPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900">
+      <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-gray-800/80 dark:backdrop-blur dark:supports-[backdrop-filter]:bg-gray-800/60">
+        <div className="container flex h-16 items-center">
+          <Link href="/" className="flex items-center space-x-2">
+            <Vote className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+            <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400">BlockVote</span>
+          </Link>
+          <nav className="ml-auto flex gap-4 sm:gap-6">
+            <Link href="/voting-room" className="text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              Voting Room
+            </Link>
+            <Link href="/register-candidate" className="text-sm font-medium hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              Register as Candidate
+            </Link>
+          </nav>
         </div>
+      </header>
+
+      <main className="flex-1">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400">
+                  Secure Voting on the Blockchain
+                </h1>
+                <p className="mx-auto max-w-[700px] text-gray-700 md:text-xl dark:text-gray-300">
+                  Cast your vote with confidence. Our platform leverages blockchain technology to ensure transparency and security in every election.
+                </p>
+              </div>
+              <div className="space-x-4">
+                <Button className="bg-purple-600 hover:bg-purple-700 text-white" asChild>
+                  <Link href="/voting-room">Enter Voting Room</Link>
+                </Button>
+                <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-100 dark:border-purple-400 dark:text-purple-400 dark:hover:bg-purple-900" asChild>
+                  <Link href="/register-candidate">Register as Candidate</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400">About Us</h2>
+            <p className="mx-auto max-w-[700px] text-gray-700 md:text-xl dark:text-gray-300 text-center">
+              BlockVote is a cutting-edge voting platform built on blockchain technology. We&apos;re committed to revolutionizing the voting process by making it more secure, transparent, and accessible to all.
+            </p>
+          </div>
+        </section>
+
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400">Key Features</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-purple-200 dark:border-purple-800">
+                <CardHeader>
+                  <CardTitle className="flex items-center space-x-2 text-purple-600 dark:text-purple-400">
+                    <Lock className="h-6 w-6" />
+                    <span>Blockchain Security</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 dark:text-gray-300">Leverage the power of blockchain to ensure vote integrity and prevent tampering.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-blue-200 dark:border-blue-800">
+                <CardHeader>
+                  <CardTitle className="flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+                    <CheckCircle className="h-6 w-6" />
+                    <span>Transparent Voting</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 dark:text-gray-300">All votes are recorded on the blockchain, allowing for full transparency and auditability.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-indigo-200 dark:border-indigo-800">
+                <CardHeader>
+                  <CardTitle className="flex items-center space-x-2 text-indigo-600 dark:text-indigo-400">
+                    <Users className="h-6 w-6" />
+                    <span>Easy Participation</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 dark:text-gray-300">Simple interface for voters and candidates, making the democratic process more accessible.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section id="cta" className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center space-y-4 text-center">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to Make Your Voice Heard?</h2>
+              <p className="mx-auto max-w-[600px] text-purple-100 md:text-xl">
+                Join BlockVote today and be part of the future of secure, blockchain-based voting.
+              </p>
+              <Button size="lg" className="bg-white text-purple-600 hover:bg-purple-100" asChild>
+                <Link href="/register">Get Started</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="w-full py-6 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+            <p className="text-center text-sm leading-loose text-gray-600 dark:text-gray-400 md:text-left">
+              © 2024 BlockVote. All rights reserved.
+            </p>
+            <nav className="flex gap-4 sm:gap-6">
+              <Link href="/terms" className="text-sm font-medium text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors">
+                Terms of Service
+              </Link>
+              <Link href="/privacy" className="text-sm font-medium text-gray-600 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors">
+                Privacy Policy
+              </Link>
+            </nav>
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
